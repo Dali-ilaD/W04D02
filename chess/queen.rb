@@ -2,7 +2,7 @@ require_relative 'piece.rb'
 require_relative 'slideable.rb'
 require_relative 'board.rb'
 
-class Queen 
+class Queen < Piece
     include Slideable
     def initialize(color, board, pos)
         super(color, board, pos) 

@@ -13,7 +13,7 @@ module Slideable
         @DIAGONAL_DIRS = DIAGONAL_DIRS
     end
 
-    def moves() 
+    def moves
         # call piece's move_dirs(array of dirs)
         # iterate over move_dirs
             # call grow_unblocked for each dir
@@ -29,8 +29,8 @@ module Slideable
         row, col = pos
         if !(0..7).include?(row) || !(0..7).include?(col)
             false
-        elsif @board[pos] != nil
-            false
+        # elsif @board[pos] != nil
+        #     false
         elsif @board[pos].color == self.color
             false
         end
@@ -38,18 +38,14 @@ module Slideable
     end
 
     def grow_unblocked_moves_in_dir(dx, dy)  # 0,1
-        # create empty array
-        # self.pos is starting pos
-        # var = prev_pos = self.pos
-        # cur_pos = self.pos[0] + dx, self.pos[1] + dy
         dir = []
-        prev_pos = self.pos
-        curr_pos = [self.pos[0] + dx, self.pos[1] + dy]
+        curr_pos = self.pos
+        curr_pos = [self.pos[0] + dx, self.pos[1] + dy] 
 
-        while valid?(prev_pos)
+        while valid?(curr_pos)
             dir << curr_pos
-            prev_pos = curr_pos
-
+            break if @board[curr_pos].color != self.color  && !@board[curr_pos].is_a?(NullPiece)
+            curr_pos = [curr_pos[0] + dx, curr_pos[1] + dy]
         end
         dir 
         

@@ -1,4 +1,7 @@
-class Knight
+require_relative 'piece.rb'
+require_relative 'stepable.rb'
+require_relative 'board.rb'
+class Knight < Piece
 include Stepable
 
   def move_diffs

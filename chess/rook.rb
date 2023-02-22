@@ -1,7 +1,7 @@
 require_relative 'piece.rb'
 require_relative 'slideable.rb'
 require_relative 'board.rb'
-class Rook 
+class Rook < Piece
     include Slideable
     
     def initialize(color, board, pos)
@@ -9,7 +9,7 @@ class Rook
     end
     
     def symbol
-        ♖
+        '♖'
     end
     
     def move_dirs
